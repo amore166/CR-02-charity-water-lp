@@ -23,6 +23,119 @@ Fonts:
   This CSS uses the provided color palette and beginner-friendly styles.
 */
 
+/* =============================
+   Charity: Water Landing Page
+   Beginner-friendly CSS styles
+   ============================= */
+
+/* Set up the main font and background color for the whole page */
+body {
+  background-color: #fdf6e3; /* Soft light yellow */
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin: 0;
+  color: #222;
+}
+
+/* Header styles */
+.header-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Use 100% instead of 100vw to avoid horizontal scroll */
+  background: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: row; /* Logo stays on the left, buttons on the right */
+  justify-content: space-between;
+  padding: 8px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-bottom: 1px solid #eee;
+  z-index: 1000; /* Increase z-index to ensure header is on top */
+  box-sizing: border-box;
+}
+
+/* Make header-actions always stick to the top right */
+.header-actions {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+  margin-right: 0;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  flex-wrap: nowrap; /* Prevent wrapping so buttons stay in a row */
+  max-width: none;   /* Remove max-width so buttons are not cropped */
+}
+
+.header-logo .brand {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #375165;
+}
+.header-logo img {
+  height: 26px;
+  margin-right: 10px;
+}
+.header-actions {
+  display: flex;
+  gap: 16px;
+}
+.header-btn {
+  background-color: #fff;
+  color: #375165;
+  border: 2px solid #f8c200;
+  border-radius: 8px;
+  padding: 8px 20px; /* Bigger padding for larger buttons */
+  font-size: 16px;   /* Bigger font size */
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap; /* Prevent text from breaking */
+}
+.header-btn:hover {
+  background-color: #f8c200;
+  color: #000;
+}
+
+/* Main container for left and right sections */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  padding-top: 70px; /* Space for header */
+}
+.left, .right {
+  min-width: 0;
+}
+.left {
+  flex: 1;
+  padding: 40px 40px 20px 40px;
+  background-color: #fdf6e3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.right {
+  flex: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  min-height: 400px;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.fade-in {
+  opacity: 1;
+}
+
 /* Set up the main font and background color for the whole page */
 body {
   background-color: #f4f8fb; /* Soft light blue for a fresh look */
@@ -136,11 +249,92 @@ section {
   margin-bottom: 20px;
 }
 
-/* 
-  Media Queries for Responsive Design
-  Media queries help make your website look good on different screen sizes,
-  like phones (small screens) and computers (large screens).
-*/
+/* Donation and Thank You boxes */
+#donation-box, #thank-you-box {
+  margin-top: 32px;
+  padding: 24px 32px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+#donation-box {
+  background: #fffbe6;
+  border: 2px solid #f8c200;
+  color: #375165;
+}
+#thank-you-box {
+  background: #77a8bb;
+  border: 2px solid #f8c200;
+  color: #fff;
+  font-size: 22px;
+}
+
+/* Modal styles for Welcome and Member boxes */
+#welcome-box, #member-box {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.3);
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+#welcome-box-content, #member-box-content {
+  background: #fff;
+  border-radius: 14px;
+  padding: 36px 48px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  font-size: 22px;
+  color: #375165;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  min-width: 260px;
+}
+#welcome-close, #member-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #375165;
+  cursor: pointer;
+}
+
+/* Simple styles for form inputs and buttons (beginner-friendly) */
+.form-input {
+  padding: 8px 12px;              /* Add space inside the input */
+  border-radius: 6px;              /* Rounded corners */
+  border: 1px solid #ccc;          /* Light gray border */
+  font-size: 16px;                 /* Make text easy to read */
+  width: 200px;                    /* Set a nice width */
+  margin-bottom: 6px;              /* Space below each input */
+  box-sizing: border-box;          /* Prevents input from overflowing */
+}
+
+.form-button {
+  background-color: #f8c200;       /* Bright yellow background */
+  color: #222;                     /* Dark text for contrast */
+  border: none;                    /* No border */
+  border-radius: 8px;              /* Rounded corners */
+  padding: 8px 20px;               /* Space inside the button */
+  font-size: 16px;                 /* Easy to read */
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: bold;               /* Make text bold */
+  cursor: pointer;                 /* Pointer cursor on hover */
+  margin-top: 8px;                 /* Space above the button */
+  transition: background 0.2s, color 0.2s;
+}
+.form-button:hover {
+  background-color: #ffd84d;       /* Lighter yellow on hover */
+  color: #000;
+}
 
 /* This media query applies styles when the screen is 600px wide or less (like on most phones) */
 @media (max-width: 600px) {
@@ -177,6 +371,49 @@ section {
     width: 90%;    /* Make image take up most of the width */
     max-width: 220px;
   }
+
+  .header-logo {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 8px;
+  }
+  .header-actions {
+    width: 100%;
+    margin-top: 8px;
+    margin-left: 0;
+    justify-content: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .header-btn {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+  .container {
+    padding-top: 110px;
+  }
+  .left {
+    padding: 24px 8px 16px 8px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  .description {
+    font-size: 16px;
+    max-width: 95vw;
+  }
+  .cta-button {
+    font-size: 16px;
+    padding: 12px 10px;
+  }
+  #thank-you-box {
+    font-size: 16px !important;
+    padding: 16px 8px !important;
+  }
+  #welcome-box-content, #member-box-content {
+    font-size: 18px;
+    padding: 20px 10px;
+  }
 }
 
 /* This media query applies styles when the screen is wider than 600px (like on tablets and computers) */
@@ -196,3 +433,56 @@ section {
     width: 300px;
   }
 }
+
+/* Accessibility: high contrast for focus */
+a:focus, button:focus {
+  outline: 3px solid #f8c200;
+  outline-offset: 2px;
+}
+
+/* Hide water rain animation */
+#water-rain, .water-emoji {
+  display: none;
+}
+
+/* Increase the size of the main text and description */
+.description {
+  font-size: 21px; /* Reduced by 5px */
+  color: #375165;
+  margin-bottom: 40px;
+  max-width: 500px;
+  text-align: center;
+  align-self: center;
+  word-break: break-word;
+}
+
+/* Make the main headline bigger */
+h1 {
+  font-size: 65px; /* Reduced by 5px */
+}
+
+/* Make CTA and Become a Member buttons look like the Sign In button */
+.cta-button, #member-btn {
+  background-color: #fff;
+  color: #375165;
+  border: 2px solid #f8c200;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 20px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 24px;
+  margin-bottom: 0;
+  display: inline-block;
+}
+.cta-button:hover, #member-btn:hover {
+  background-color: #f8c200;
+  color: #000;
+}
+
+/* Add any additional beginner-friendly styles below this line */
+
+/* ...existing code... */
